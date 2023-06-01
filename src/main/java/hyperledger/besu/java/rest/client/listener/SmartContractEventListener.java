@@ -5,9 +5,11 @@ import hyperledger.besu.java.rest.client.config.EthEventsProperties;
 import hyperledger.besu.java.rest.client.filters.TopicFilterHandler;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 @Service
+@ConditionalOnProperty(name = "events.block", havingValue = "true", matchIfMissing = true)
 public class SmartContractEventListener implements Runnable {
   /** Loads the eth-connector config. */
   @Autowired private EthConfig ethConfig;
