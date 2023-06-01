@@ -25,7 +25,7 @@ public class EthClientController {
       @RequestParam("abi-definition") @Validated MultipartFile abiDefinitionFile,
       @RequestParam("transaction_contract_address") @Validated String contractAddress,
       @RequestParam("transaction_function_name") @Validated String functionName,
-      @RequestParam("transaction_params") @Validated String... params) {
+      @RequestParam(value = "transaction_params", required = false) @Validated String... params) {
     log.debug(
         "Write transaction contract: {}, function: {}, params: {}",
         contractAddress,
@@ -42,7 +42,7 @@ public class EthClientController {
       @RequestParam("abi-definition") MultipartFile abiDefinitionFile,
       @RequestParam("transaction_contract_address") @Validated String contractAddress,
       @RequestParam("transaction_function_name") @Validated String functionName,
-      @RequestParam("transaction_params") @Validated String... params) {
+      @RequestParam(value = "transaction_params", required = false) @Validated String... params) {
     log.debug(
         "Read transaction contract: {}, function: {}, params: {}",
         contractAddress,
